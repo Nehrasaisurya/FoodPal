@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+html{
+  scroll-behavior: smooth;
+}
+body{
+    font-family: 'Poppins', sans-serif;
+}
+.cart{
+  position: relative;
+}
+.cart .cart-number{
+  position: absolute;
+  top: -9px;
+  right: -9px;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background-color:rgb(255, 79, 79);
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 13px;
+
+}
+.clip{
+  clip-path: polygon(0 100%, 4% 51%, 0 0, 100% 0, 96% 49%, 100% 100%);
+}
+::-webkit-scrollbar{
+  display: none;
+}
+.active{
+  color: red;
+}
+#Cart{
+  background-color: rgb(243,244,246);
+}
+
