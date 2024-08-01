@@ -16,15 +16,15 @@ const RestaurantMenu = () => {
     );
   }
 
-  const { name, cuisines, avgRating, locality } =
-    resInfo?.cards[0]?.card?.card?.info;
-
   const catergories =
-    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+    resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
       (cate) =>
         cate?.card?.card?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
+
+  const restaurant_data = resInfo?.cards[2]?.card?.card?.info;
+  console.log(restaurant_data);
 
   return (
     <div className="pt-32">
@@ -32,11 +32,29 @@ const RestaurantMenu = () => {
         className="flex justify-between mx-auto w-10/12 sm:w-8/12 md:w-7/12 lg:w-6/12 pb-4"
         style={{ borderBottom: "1px solid gray" }}
       >
-        <div className="">
-          <h1 className="text-4xl font-semibold">{name}</h1>
-          <h4 className="text-md opacity-90 -z-10 ">{cuisines.join(", ")}</h4>
-          <h1 className="text-sm opacity-80 -z-10">📌{locality}</h1>
-          <h1 className="text-sm opacity-80 -z-10">⭐{avgRating}</h1>
+        <div className="flex justify-between">
+          <div className="">
+            <h1 className="text-4xl font-semibold">{restaurant_data?.name}</h1>
+            <h4 className="text-md opacity-90 -z-10 ">
+              {restaurant_data?.cuisines.join(", ")}
+            </h4>
+            <h1 className="text-sm opacity-80 -z-10">
+              📌{restaurant_data?.locality}
+            </h1>
+            <h1 className="text-sm opacity-80 -z-10">
+              ⭐{restaurant_data?.avgRating}
+            </h1>
+          </div>
+        </div>
+        <div>
+          <img
+            src={
+              "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
+              restaurant_data?.cloudinaryImageId
+            }
+            alt="...."
+            className="w-64 rounded-md"
+          />
         </div>
       </div>
       {catergories.map((category, index) => (
